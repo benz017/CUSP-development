@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Evento -Event Html Template">
+    <meta name="keywords" content="Evento , Event , Html, Template">
+    <meta name="author" content="ColorLib">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- ========== Title ========== -->
+    <title>CUSP</title>
+
+        {% load static %}
+    <!-- ========== Favicon Ico ========== -->
+    <link rel="icon" href="{% static 'favicon-32x32.png' %}">
+    <!-- ========== STYLESHEETS ========== -->
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Fonts Icon CSS -->
+    <link href="{% static 'css/font-awesomevent.last.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/et-linevent.last.css' %}" rel="stylesheet">
+    <link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet">
+    <!-- Carousel CSS -->
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.themevent.last.default.min.css' %}" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animatevent.last.min.css' %}">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+</head>
+<body>
+{% block body %}
+
+<!--header start here -->
+<header class="header navbar fixed-top navbar-expand-md">
+    <div class="container">
+        <a class="navbar-brand logo" href="#">
+            <img src="{% static 'img/logo.png' %}" alt="Evento"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headernav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="lnr lnr-text-align-right"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-sm-row-reverse" id="headernav">
+            <ul class=" nav navbar-nav menu">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="events">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="products">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="blogs">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="contact-us">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!--header end here-->
+
+<!--cover section slider -->
+<section id="home" class="home-cover">
+    <div class="cover_slider owl-carousel owl-theme">
+        <div class="cover_item" style="background: url({% static 'img/bg/slider.jpg' %});">
+             <div class="slider_content">
+                <div class="slider-content-inner">
+                    <div class="container">
+                        <div class="slider-content-left">
+                            <strong class="cover-xl-text">Community</strong>
+                            <h2 class="cover-title">
+                                of the people, by the people,<br>for the people
+                            </h2>
+
+                            <p class="cover-date">
+                                shall persist to grow amidst the chaos.
+                            </p>
+                            <a href="#aboutus" class=" btn btn-primary btn-rounded" >
+                                Join Us Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cover_item" style="background: url({% static 'img/bg/slider2.jpg' %});">
+            <div class="slider_content">
+                <div class="slider-content-inner">
+                    <div class="container">
+                        <div class="slider-content-left">
+                            <h2 class="cover-title">
+                                Join the action of
+                            </h2>
+                            <strong class="cover-xl-text">Fitness &<br>Mindfulness</strong>
+                            <h2 class="cover-title">
+                                sessions with us.
+                            </h2>
+                            <p class="cover-date">
+                                Actions speak louder than words.
+                            </p>
+                            <a href="#eventinfo" class=" btn btn-primary btn-rounded" >
+                                Join Us Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cover_item" style="background: url({% static 'img/bg/slider3.jpg' %});">
+            <div class="slider_content">
+                <div class="slider-content-inner">
+                    <div class="container">
+                        <div class="slider-content-left">
+                            <h2 class="cover-title">
+                                Revive the Harmony of Nature with
+                            </h2>
+                            <strong class="cover-xl-text">Eco-friendly<br>Alternatives</strong>
+                            <h2 class="cover-title">
+                                to conventional food utensils.
+                            </h2>
+                            <p class="cover-date">
+                                Nature needs us.
+                            </p>
+                            <a href="#aboutus" class=" btn btn-primary btn-rounded" >
+                                Join Us Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cover_nav">
+        <ul class="cover_dots">
+            <li class="active" data-slide="0"><span>1</span></li>
+            <li  data-slide="1"><span>2</span></li>
+            <li  data-slide="2"><span>3</span></li>
+        </ul>
+    </div>
+</section>
+<!--cover section slider end -->
+
+<!--event info -->
+<section class="pt100 pb100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-3  ">
+                <div class="icon_box_two">
+                    <i class="ion-ios-calendar-outline"></i>
+                    <div class="content">
+                        <h5 class="box_title">
+                            DATE
+                        </h5>
+                        <p>
+                            {{span}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3  ">
+                <div class="icon_box_two">
+                    <i class="ion-ios-location-outline"></i>
+                    <div class="content">
+                        <h5 class="box_title">
+                            location
+                        </h5>
+
+                        <p>
+                            {{ event.last.location }}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3  ">
+                <div class="icon_box_two">
+                    <i class="ion-ios-person-outline"></i>
+                    <div class="content">
+                        <h5 class="box_title">
+                            instructor
+                        </h5>
+                        <p>
+                            
+                                {{event.last.instructors}}
+                            
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3  ">
+                <div class="icon_box_two">
+                    <i class="ion-ios-pricetag-outline"></i>
+                    <div class="content">
+                        <h5 class="box_title">
+                            tickets
+                        </h5>
+                        <p>
+                            
+                            {{solo}}
+                        
+                             INR
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--event info end -->
+
+
+<!--event countdown -->
+<section class="bg-img pt70 pb70" style="background-image: url({{event.last.event_pic.url}});">
+    <div class="overlay_dark"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <h4 class="mb30 text-center color-light">Counter until the big event</h4>
+                <div class="countdown">
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--event count down end-->
+
+
+<!--about the event -->
+<section id="eventinfo" class="pt100 pb100">
+    <div class="container">
+        <div class="section_title">
+            <h3 class="title">
+                About the event
+            </h3>
+        </div>
+        <div id="about-event" class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <p>
+                    {{about_1}}
+                </p>
+            </div>
+            <div class="col-12 col-md-6">
+                <p>
+                    {{about_2}}
+                </p>
+            </div>
+        </div>
+
+        <!--event features-->
+        <div class="row justify-content-center mt30">
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="icon_box_one">
+                    <i class="lnr lnr-smile"></i>
+                    <div class="content">
+                        <h4>Instructors</h4>
+                        <p>
+                            {{event.last.about_instructor}}
+                        </p>
+                        <!--a href="#">read more</a-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="icon_box_one">
+                    <i class="lnr lnr-sun"></i>
+                    <div class="content">
+                        <h4>Outdoors</h4>
+                        <p>
+                            This session is intrinsically tailored for rejuvenating your mind and body in resonance with the nature.
+                        </p>
+                        <!--a href="#">read more</a-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="icon_box_one">
+                    <i class="lnr lnr-clock"></i>
+                    <div class="content">
+                        <h4>Time</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus massa nec graviantevent.last.
+                        </p>
+                        <!--a href="#">read more</a-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="icon_box_one">
+                    <i class="lnr lnr-star"></i>
+                    <div class="content">
+                        <h4>Early Bird</h4>
+                        <p>
+                           Register early and get yourself a <strong id="dis">{{event.last.earlybird_discount}}%</strong> discount till {{event.last.earlybird_last_date}}. <strong><br>Grab your tickets right now!!</strong>
+                        </p>
+                        <!--a href="#">read more</a-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--event features end-->
+    </div>
+</section>
+<!--about the event end -->
+<!--Price section-->
+<section class="pb100">
+    <div class="container">
+        <div class="section_title mb50">
+            <h3 class="title">
+                Pricing table
+            </h3>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-12">
+                <div class="price_box">
+                    
+                   <div class="price_header">
+                       <h4>
+                           Solo
+                       </h4>
+                       <h6>
+                           For single's entry
+                       </h6>
+                   </div>
+                    <div class="price_tag">
+                            {{solo}}
+                        <sup>INR</sup>
+                    </div>
+                    <div class="price_footer">
+                        <a href="#" class="btn btn-primary btn-rounded">Purchase</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="price_box">
+                    <div class="price_header">
+                        <h4>
+                            Duet
+                        </h4>
+						
+                        <h6>
+                            For couple entry
+                        </h6>
+                    </div>
+                    <div class="price_tag">
+                        
+                            {{duet}}
+                        <sup>INR</sup>
+                    </div>              
+                    <div class="price_footer">
+                        <a href="#" class="btn btn-primary btn-rounded">Purchase</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="price_box">
+					<div class="price_highlight">
+                        recommended
+                    </div>
+                    <div class="price_header">
+                        <h4>
+                            Tribe
+                        </h4>
+                        <h6>
+                            For group entry (3-5)
+                        </h6>
+                    </div>
+                    <div class="price_tag">
+                        
+                            {{tribe}}
+                        <sup>INR</sup>
+                    </div>                
+                    <div class="price_footer">
+                        <a href="#" class="btn btn-primary btn-rounded">Purchase</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--price section end -->
+
+
+
+<!--about CUSP -->
+<section id="aboutus" class="pt100 pb100">
+    <div class="container">
+        <div class="section_title">
+            <h3 class="title">
+                About Us
+            </h3>
+        </div>
+        <div class="row justify-content-center about-us">
+            <div class="col-12 col-md-6">
+
+                <p><strong>CUSP</strong> is a quickly expanding community built for and by fitness enthusiasts, mindfulness practitioners and eco-aware change-makers.
+                Our groundwork rests on two specific fields-</p>
+
+                <ul>
+                    <li>Organising <strong>Fitness and Mindfulness</strong> sessions</li>
+                    <li>Helping <strong>Restaurants, Cafes, Food chains</strong> <strong class="gr">Go Green</strong> swiftly, since it's a tiresome process for the owners.</li>
+                </ul>
+
+
+                <p>We believe fitness should complement mindfulness, and vice versa. Although the gym helps an individual with toned and muscular bodies, it's the mind he/she is actually training; the former being a byproduct, an amazing one none the less! Hence our community is on a journey to bring physical fitness and mindfulness on the same pagevent.last. Our session are from various fields, few examples are <strong><u>Movement Culture</u>, <u>Dance Movement Rejuvenation</u>, <u>Yoga</u>, <u>Sound Bath</u>,</strong> etc; all of them however serving the same goal: <br><br><strong>Going back with a fitter body and peaked mind!</strong><br><br>
+                    Did you know? <strong>We prefer open-air session on grass</strong> due to it's playfulness (sparks creativity) and calming qualities!
+                </p>
+            </div>
+            <div class="col-12 col-md-6">
+                <p>
+                    Our community is also very aware of the environmental complications and believes that giving back to Mother Nature in anyway, whether small or big, is a plus for our planet, especially now when Earth needs us most.
+                    We noticed that many restaurants were reluctant to Go Green due to two main reasons:</p>
+                <ul>
+                    <li>The high cost of <strong>ecologically intelligent products/alternatives.</strong></li>
+                <li>The Process of Change (PoC) is often too tiresome for owners, since they have to approach different sellers for different products.</li>
+                </ul>
+                <p>
+                    <strong>CUSP has taken a pledge to curate financially efficient sustainable eco-friendly products</strong> to exactly solve this particular problem. If your cafe is planning to Go Green, all you'll have to do is give us a budget and we'll plan the PoC for you, making the shift as easy as sneezing with your eyes open!
+                    In your PoC, we'll help you Go Green over the next few months, depending on your budget and products needed. From <strong>eco-friendly chopsticks and straws to momo-steamers and sporks, we got your back!</strong>
+
+                It's high time the eco-battle breakes financial constrictions and seep to the remotest of cafes and restaurants.
+                Let's take ecological awareness beyond hashtags and tea-talks!!
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--about the event end -->
+
+<!--event calender-->
+<section class="pb100">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="event_calender table">
+                <thead class="event_title">
+                <tr>
+                    <th>
+                        <i class="ion-ios-calendar-outline"></i>
+                        <span>events calendar</span>
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for e in event|slice:":3" reversed %}
+                <tr>
+                    <td>
+                        <img src="{{e.event_thumbnail.url}}" alt="event">
+                    </td>
+                    <td class="event_date">
+                        {{ e.start_date|date:"j" }}
+                        <span>{{e.start_date|date:"F"}}</span>
+                    </td>
+                     <td>
+                        <div class="event_place">
+                            <h6>{{ e.start_date|date:"g A" }} - {{ e.end_date|date:"g A" }}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="event_place">
+                            <h5>{{e.name}}</h5>
+                            <p>Instructor: {{e.instructors}}</p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!--event calender end -->
+
+<!--brands section -->
+<section class="bg-gray pb100">
+    <div class="container">
+        <div class="section_title mb50">
+            <h3 class="title">
+                our squad
+            </h3>
+        </div>
+        <div class="brand_carousel owl-carousel">
+            <div class=" text-center">
+            <div class="speaker_box">
+                <div class="speaker_img">
+                    <img src="{% static 'img/speakers/s1.png' %}" alt="speaker name">
+                </div>
+                <div class="info_box">
+                        <h5 class="name">Shayori Banerjee</h5>
+                        <p class="position">Event Organizer</p>
+                </div>
+            </div>
+        </div>
+            <div class=" text-center">
+               <div class="speaker_box">
+                <div class="speaker_img">
+                    <img src="{% static 'img/speakers/s2.png' %}" alt="speaker name">
+                </div>
+                <div class="info_box">
+                        <h5 class="name">Agniva Ray</h5>
+                        <p class="position">Founder/Director</p>
+                    </div>
+            </div>
+            </div>
+            <div class=" text-center">
+                 <div class="speaker_box">
+                <div class="speaker_img">
+                    <img src="{% static 'img/speakers/s3.png' %}" alt="speaker name">                    
+                </div>
+                <div class="info_box">
+                        <h5 class="name">Ayan Banerjee</h5>
+                        <p class="position">Operations & Technical Director</p>
+                    </div>
+            </div>
+            </div>
+            <div class=" text-center">
+               <div class="speaker_box">
+                <div class="speaker_img">
+                    <img src="{% static 'img/speakers/s4.png' %}" alt="speaker name">
+                </div>
+                <div class="info_box">
+                        <h5 class="name">Shubharup Ganguly</h5>
+                        <p class="position">Content Writer</p>
+                    </div>
+            </div>
+            </div>
+            <div class=" text-center">
+                <div class="speaker_box">
+                <div class="speaker_img">
+                    <img src="{% static 'img/speakers/s6.png' %}" alt="speaker name">
+                </div>
+                <div class="info_box">
+                        <h5 class="name">Tshewang N. Sherpa </h5>
+                        <p class="position">Business & Product Developer</p>
+                    </div>
+            </div>
+            </div>
+            <div class=" text-center">
+                <div class="speaker_box">
+                <div class="speaker_img">
+                    <img src="{% static 'img/speakers/s7.png' %}" alt="speaker name">
+                </div>
+                <div class="info_box">
+                        <h5 class="name">Anushka Bhattacharyya</h5>
+                        <p class="position">Digital Marketing Specialist</p>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--brands section end-->
+<!--footer start -->
+<footer>
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-md-3 col-12">
+                <div class="footer_box">
+                    <div class="footer_header">
+                        <div class="footer_logo">
+                            <img src="{% static 'img/logo.png' %}" alt="evento">
+                        </div>
+                    </div>
+                    <div class="footer_box_body">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus massa nec gravida tempus. Integer iaculis in aazzzCurabitur a pulvinar nunc. Maecenas laoreet finibus lectus, at volutpat ligula euismod.
+                        </p>
+                        <ul class="footer_social">
+                            <li>
+                                <a href="https://www.facebook.com/CUSP-Culturally-Unified-for-Science-and-Peace-101492801418812/" target="_blank"><i class="ion-social-facebook"></i></a>
+                            </li>
+                            <!--li>
+                                <a href="#"><i class="ion-social-twitter"></i></a>
+                            </li-->
+                            <li>
+                                <a href="https://www.instagram.com/cuspaxis/" target="_blank"><i class="ion-social-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-5">
+                <div class="footer_box">
+                    <div class="footer_header">
+                        <h4 class="footer_title">
+                            instagram
+                        </h4>
+                    </div>
+                    <div class="footer_box_body">
+                        <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/049d5aae546f54d1850a4a3b6e92d249.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="footer_box">
+                    <div class="footer_header">
+                        <h4 class="footer_title">
+                            subscribe to our newsletter
+                        </h4>
+                    </div>
+                    <div class="footer_box_body">
+                        <div class="newsletter_form">
+                            <input type="email" class="form-control" placeholder="E-Mail here">
+                            <button class="btn btn-rounded btn-block btn-primary">SUBSCRIBE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="copyright_footer">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-12">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.last. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.last. --></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer end -->
+
+<!-- jquery -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- bootstrap -->
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<!--slick carousel -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!--parallax -->
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<!--Counter up -->
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<!--Counter down -->
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<!-- WOW JS -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<!-- Custom js -->
+<script>
+    var start_time = '{{ start_time }}';
+</script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/form.js' %}"></script>
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+<!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6991900.js"></script>
+<!-- End of HubSpot Embed Code -->
+{% endblock %}
+</body>
+</html>
