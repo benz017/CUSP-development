@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Evento -Event Html Template">
+    <meta name="keywords" content="Evento , Event , Html, Template">
+    <meta name="author" content="ColorLib">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- ========== Title ========== -->
+    <title>Contact Us</title>
+    <!-- ========== Favicon Ico ========== -->
+    <!--<link rel="icon" href="fav.ico">-->
+    <!-- ========== STYLESHEETS ========== -->
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon-32x32.png' %}">
+    <!-- ========== STYLESHEETS ========== -->
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Fonts Icon CSS -->
+    <link href="{% static 'css/font-awesomevent.last.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/et-linevent.last.css' %}" rel="stylesheet">
+    <link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet">
+    <!-- Carousel CSS -->
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.themevent.last.default.min.css' %}" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animatevent.last.min.css' %}">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+</head>
+<body>
+{% block body %}
+
+<!--header start here -->
+<header class="header navbar fixed-top navbar-expand-md">
+    <div class="container">
+        <a class="navbar-brand logo" href="#">
+            <img src="{% static 'img/logo.png' %}" alt="Evento"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headernav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="lnr lnr-text-align-right"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-sm-row-reverse" id="headernav">
+            <ul class=" nav navbar-nav menu">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/../events">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/../products">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/../blogs">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="">Contact</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+<!--header end here-->
+
+<!--page title section-->
+<section class="inner_cover" style="background-image: url({% static 'img/bg/slider.jpg' %});">
+    <div class="overlay_dark"></div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="inner_cover_content">
+                    <h3>
+                        contact us
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="breadcrumbs">
+            <ul>
+                <li><a href="/">Home</a>  | </li>
+                <li><span>Contact</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--page title section end-->
+
+
+<!--contact section -->
+<section class="pt100 pb100">
+    <div class="container">
+        <div class="row justify-content-center mt100">
+            <div class="col-md-6 col-12">
+                <div class="contact_info">
+                    <h5>
+                        CUSP is here for you
+                    </h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus massa nec gravida tempus. Integer iaculis in lacus a sollicitudin. Ut hendrerit hendrerit nisl a accumsan. Pellentesque convallis consectetur tortor id placerat. Curabitur a pulvinar nunc. Maecenas laoreet finibus lectus, at volutpat ligula euismod.
+                    </p>
+                    <ul class="social_list">
+                        <!--li>
+                            <a href="#"><i class="ion-social-pinterest"></i></a>
+                        </li>
+                         <li>
+                            <a href="#"><i class="ion-social-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="ion-social-dribbble"></i></a>
+                        </li-->
+                        <li>
+                            <a href="https://www.facebook.com/CUSP-Culturally-Unified-for-Science-and-Peace-101492801418812/" target="_blank"><i class="ion-social-facebook"></i></a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com/cuspaxis/" target="_blank"><i class="ion-social-instagram"></i></a>
+                        </li>
+                    </ul>
+
+                    <ul class="icon_list pt50">
+                        <li>
+                            <i class="ion-location"></i>
+                            <span>
+                                        South Kolkata<br/>
+                                        West Bengal , IN
+                            </span>
+                        </li>
+                        <li>
+                            <i class="ion-ios-telephone"></i>
+                            <span>
+                                       +91-7980-468742
+                                </span>
+                        </li>
+                        <li>
+                            <i class="ion-email-unread"></i>
+                            <span>
+                                    cuspaxis@gmail.com
+                                </span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="." method="POST" role="form" id='form' data-url='{{ request.build_absolute_uri|safe }}' data-toggle="modal" onsubmit="return validateForm()">
+                {% csrf_token %}
+                  {{ form.as_p }}
+                  <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Fullname" data-rule="minlen:4,required" data-msg="Please enter at least 4 chars" required />
+                    <div class="error-text small" id="name_error"><strong></strong></div>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email,required" data-msg="Please enter a valid email" required/>
+                    <div class="error-text small" id="error_mail"><strong></strong></div>
+
+                  </div>
+                  </div>
+                  <div class="form-group" >
+                  <input type="text" class="form-control" name="contact_number" id="contact_number" placeholder="Contact Number" data-rule="minlen:10" data-msg="Please enter at least 10 digit number" />
+                  <div class="error-text small" id="error_number" ><strong></strong></div>
+                  </div>
+                  <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" id="message" data-rule="required" data-msg="Please write something for us" placeholder="Message" required></textarea>
+                  <div class="" ></div>
+                  </div>
+                  <div class="text-center">
+                    <!-- button with onclick event that triggers the form validation. If the form is valid, triggers click of second button -->
+
+                    <button type="button" value="Submit" title="Send Message" name="submit" class="btn btn-rounded btn-block btn-primary" onclick="if(validateForm())$('#triggerModal').click();">Send Message</button>
+
+                    <!-- hidden submit button -->
+
+                    <button type="submit" id="triggerModal" hidden value="Submit" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal"></button>
+                  </div>
+              </form>
+            </div>
+
+          </div>
+
+                        <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-body">
+         <div class="container">
+	        <div class="row">
+		        <div id="loader">
+    		    <div class="dot"></div>
+			    <div class="dot"></div>
+			    <div class="dot"></div>
+			    <div class="dot"></div>
+			    <div class="dot"></div>
+			    <div class="dot"></div>
+			    <div class="dot"></div>
+			    <div class="dot"></div>
+			    <div class="lading"></div>
+		        </div>
+                <h3 id="modalTextError"></h3>
+	        </div>
+        </div>
+      </div>
+      <h3 class="loading" id="modalText" ><b>Sending</b></h3>
+      <button type="button" hidden class="btn btn-ar btn-default" id="cancel-btn" data-dismiss="modal">x</button>
+  </div>
+</div>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!--contact section end -->
+
+
+
+<!--get tickets section -->
+<section class="bg-img pt100 pb100" style="background-image: url({% static 'img/bg/tickets.png' %});">
+    <div class="container">
+        <div class="section_title mb30">
+            <h3 class="title color-light">
+                GEt your tikets
+            </h3>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-9 text-md-left text-center color-light">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus massa nec gravida tempus. Integer iaculis in aazzzCurabitur a pulvinar nunc. Maecenas laoreet finibus lectus, at volutpat ligula euismod.
+            </div>
+            <div class="col-md-3 text-md-right text-center">
+                <a href="#" class="btn btn-primary btn-rounded mt30">buy now</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--get tickets section end-->
+
+<!--footer start -->
+<footer>
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-md-3 col-12">
+                <div class="footer_box">
+                    <div class="footer_header">
+                        <div class="footer_logo">
+                            <img src="{% static 'img/logo.png' %}" alt="evento">
+                        </div>
+                    </div>
+                    <div class="footer_box_body">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus massa nec gravida tempus. Integer iaculis in aazzzCurabitur a pulvinar nunc. Maecenas laoreet finibus lectus, at volutpat ligula euismod.
+                        </p>
+                        <ul class="footer_social">
+                            <li>
+                                <a href="https://www.facebook.com/CUSP-Culturally-Unified-for-Science-and-Peace-101492801418812/" target="_blank"><i class="ion-social-facebook"></i></a>
+                            </li>
+                            <!--li>
+                                <a href="#"><i class="ion-social-twitter"></i></a>
+                            </li-->
+                            <li>
+                                <a href="https://www.instagram.com/cuspaxis/" target="_blank"><i class="ion-social-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-5">
+                <div class="footer_box">
+                    <div class="footer_header">
+                        <h4 class="footer_title">
+                            instagram
+                        </h4>
+                    </div>
+                   <div class="footer_box_body">
+                        <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/049d5aae546f54d1850a4a3b6e92d249.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="footer_box">
+                    <div class="footer_header">
+                        <h4 class="footer_title">
+                            subscribe to our newsletter
+                        </h4>
+                    </div>
+                    <div class="footer_box_body">
+                        <div class="newsletter_form">
+                            <input type="email" class="form-control" placeholder="E-Mail here">
+                            <button class="btn btn-rounded btn-block btn-primary">SUBSCRIBE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="copyright_footer">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-12">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer end -->
+
+<!-- jquery -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<!-- bootstrap -->
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<!--slick carousel -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!--parallax -->
+<script src="{% static 'js/parallax.min.js' %}"></script>
+<!--Counter up -->
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<!--Counter down -->
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<!-- WOW JS -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<!-- Form -->
+<script src="{% static 'js/form.js' %}"></script>
+<!-- Custom js -->
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/smooth-scroll.js' %}"></script>
+{% endblock %}
+</body>
+</html>
