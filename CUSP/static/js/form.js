@@ -1,6 +1,7 @@
 $(document).on('submit','#form',function(e){
     e.preventDefault();
     msg = ''
+    $body = $("body");
     var $myForm = $('#form')
     var $formData = $(this).serialize()
     var $thisURL = $myForm.attr('data-url') || window.location.href
@@ -23,27 +24,20 @@ $(document).on('submit','#form',function(e){
     });
     }
     function handleFormSuccess(data){
-        console.log($Name)
-        console.log($mailID)
-        console.log($contactNumber)
-        console.log($message)
-        console.log($formData)
-        $('#loader').show();
-        $('#modalText').show();
-        $('#modalTextError').hide();
-        $('#myModal').modal('hide');
-        $('#cancel-btn').click();
+        $('#myModal').modal('show');
         $myForm[0].reset();
             $.ajax({
             type:'POST',
-            url:'/contact-us/success/',
+            url:'/contact-us/success',
             data: $formData,
-            success:function(){
-            console.log('mail sent')
-            }
+            success:mailsentSuccess,
         });
 
         }
+        function mailsentSuccess(){
+            $('#myModal').modal('hide');
+            console.log('mail sent')
+            }
 
      function handleFormError(jqXHR,textStatus, errorThrown, exception){
         console.log(jqXHR);

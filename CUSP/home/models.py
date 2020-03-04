@@ -22,3 +22,10 @@ class Events(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Subscribers(models.Model):
+    email = models.EmailField(max_length=250)
+
+    def __str__(self):
+        return self.email

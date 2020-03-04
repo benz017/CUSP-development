@@ -83,7 +83,7 @@ input.input100 {
   top: -2px;
   left: -2px;
   pointer-events: none;
-  border: 2px solid #57b846;
+  border: 2px solid #00C8A3;
   border-radius: 5px;
 
   visibility: hidden;
@@ -239,10 +239,12 @@ input.input100 {
 
 .m1-txt2 {
   font-family: "Montserrat", sans-serif;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   line-height: 1.5;
-  color: #17D96F;
+  background: linear-gradient(180deg,#00B2CE, #17D96F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 
@@ -708,7 +710,7 @@ input.input100 {
 }
 
 .btn-primary {
-  background-color: #17D96F;
+  background: linear-gradient(90deg, #00B2CE, #17D96F);
   font-family: "Montserrat", sans-serif;
   border: solid 1px #17D96F;
   color: #ffffff;
@@ -716,9 +718,9 @@ input.input100 {
   transition: all 300ms ease-in-out;
 }
 .btn-primary:hover {
-  background-color: #18181c;
+  background: #18181c;
   color: #ffffff;
-  border: solid 1px #18181c;
+  border: solid 1px #00C8A3;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
@@ -761,8 +763,22 @@ input.input100 {
 }
 .btn-dark:hover {
   color: #333333;
-  border: solid 3px #17D96F;
-  background-color: #17D96F;
+  border: solid 3px #333333;
+  background: linear-gradient(90deg, #00B2CE, #17D96F);
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
+}
+
+#myModal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+                url('https://media.giphy.com/media/ONIXY4gb6RwWo4WNLv/giphy.gif')
+                50% 50%
+                no-repeat;
 }
