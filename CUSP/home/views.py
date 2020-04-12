@@ -3,7 +3,7 @@ from .models import Events,Subscribers
 from .timer import time,date,earlybird_time
 from .pricing import discount_calculator
 from .text_processing import para_splitter
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from django.http import HttpResponse
 from django.conf import settings
 from django.core.mail import send_mail
@@ -13,7 +13,7 @@ from django.utils.html import strip_tags
 from razorpay import Client
 import json
 # Create your views here.
-client = Client(auth=("rzp_test_VS4c9ujrlnqnII","pcUrzfu6gL6PjxP7bq5Z4Uo4"))
+client = Client(auth=(settings.RAZOR_PAY_KEY,settings.RAZOR_PAY_SECRET_KEY))
 
 
 def landing(request):
@@ -21,7 +21,7 @@ def landing(request):
     event = Events.objects.all()
     last_obj = Events.objects.last()
     json_data['event'] = event
-    json_data['start_time'] = time(last_obj)
+    json_data['start_time'] = time(Events)
     json_data['span'] = date(last_obj)
     if earlybird_time(last_obj):
         solo,duet,tribe = discount_calculator(last_obj)
@@ -41,14 +41,15 @@ def landing(request):
         send_mail(subject, msg, settings.EMAIL_HOST_USER, [settings.EMAIL_HOST_USER], fail_silently=False)
     return render(request,'home/index.html', context=json_data)
 
-
+@csrf_exempt
 def pay(request):
     if request.method == "POST":
         amount = 5100
         payment_id = request.form['razorpay_payment_id']
         client.payment.capture(payment_id, amount)
-        return json.dumps(client.payment.fetch(payment_id))
-
+        pay_id = json.dumps(client.payment.fetch(payment_id))
+        print(pay_id)
+    return render(request,'home/index.html')
 
 @csrf_exempt
 def success(request):

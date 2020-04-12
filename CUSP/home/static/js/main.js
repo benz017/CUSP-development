@@ -19,14 +19,19 @@
 /*  PRE LOADING
   =============================================== */
 'use strict';
+$("#icon-bar").hide().fadeIn(4000);
+setTimeout(function(){
+    $('.subscribeModal-lg').modal('show');
+}, 1000);
 $(window).load(function() {
     $('.loader').delay(500).fadeOut('slow');
+    
 });
 
 
 $(document).ready(function() {
-
     'use strict';
+    
     /* ==============================================
      /*   wow
       =============================================== */
@@ -64,6 +69,8 @@ $(document).ready(function() {
             );
         });
 
+
+    
     /* ==============================================
      SLIDER
      =============================================== */

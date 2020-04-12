@@ -32,7 +32,8 @@ EMAIL_HOST_PASSWORD = '1Step_Closer'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
+RAZOR_PAY_KEY = 'rzp_live_aA5XqHZ0PFLZ2K'
+RAZOR_PAY_SECRET_KEY = 'RvCItS7vNK8h2NaTx9oVtUEV'
 # Application definition
 
 INSTALLED_APPS = [

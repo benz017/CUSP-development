@@ -1,12 +1,14 @@
 from datetime import datetime,timedelta
+import pytz
 from .models import Events
 
 
-def time(last_obj):
+def time(all_obj):
+    now = datetime.utcnow().replace(tzinfo=pytz.utc)
     frm = '%Y/%m/%d %H:%M:%S'
-    start_date = last_obj.start_date
-    start = start_date.strftime(frm)
-    return start
+    objs = all_obj.objects.filter(start_date__gt=now).order_by('start_date').first()
+    next_event = objs.start_date.strftime(frm)
+    return next_event
 
 
 def date(last_obj):

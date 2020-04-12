@@ -1763,7 +1763,7 @@ header.sticky_header {
 }
 @media (max-width: 767px) {
   header {
-    background-color: #00C8A3;
+    background-color: #212529;
     margin: 0;
     -webkit-box-shadow: 0 0 42px rgba(0, 0, 0, 0.08);
     box-shadow: 0 0 42px rgba(0, 0, 0, 0.08);
@@ -2151,7 +2151,7 @@ Cover
 .cover_nav {
   position: relative;
   bottom: 0;
-  z-index: 999;
+  z-index: 98;
   text-align: center;
   padding: 0;
   margin: 0 auto;
@@ -3371,3 +3371,124 @@ outline: 0 !important;
   -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
           box-shadow: 0 0 0 rgba(0, 0, 0, 0);
           }
+
+
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 99 !important;
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+  border-top: 1px solid #00C8A3;
+  border-bottom: 1px solid #00C8A3;
+  border-right: 1px solid #00C8A3;
+  margin: 1px 1px 1px 1px;
+}
+
+@media (max-width: 768px){
+  .icon-bar {
+    position: fixed;
+    bottom: 0%;
+  -webkit-transform: translateY(80%);
+  -ms-transform: translateY(80%);
+  transform: translateY(80%);
+    z-index: 99 !important;
+  }
+  .icon-bar a {
+    display: inline-block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+    border-top: 1px solid #00C8A3;
+    border-bottom: 1px solid #00C8A3;
+    border-right: 1px solid #00C8A3;
+    border-left: 1px solid #00C8A3;
+    margin: 1px 1px 1px 2px;
+  }
+  
+
+}
+
+.icon-bar a:hover {
+  background-color: #00C8A3;
+}
+
+.sidebar-icon {
+  background: #18181c;
+  color: white;
+}
+
+
+/*--------------------------------------------------------------
+# Loader
+--------------------------------------------------------------*/
+
+#subscribeModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  overflow:hidden;
+}
+
+#subscribeModal .modal-content{
+  overflow:hidden;
+}
+
+#subscribeModal .modal-body{
+  background-image: url('../img/leaf.png');
+}
+
+ #greet-text {
+  background:  #00C8A3;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #18181c;
+ }
+a.h2{
+    color:#007b5e;
+    margin-bottom:0;
+    text-decoration:none;
+}
+#subscribeModal .form-control {
+    height: 53px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+	  padding-left:30px;
+}
+#subscribeModal .btn {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+	padding-right:40px;
+	background:#007b5e;
+	border-color:#007b5e;
+}
+#subscribeModal .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #007b5e;
+    outline: 0;
+    box-shadow: none;
+}
+
+/*--------------------------------------------------------------
+# Misc
+--------------------------------------------------------------*/
+
+#login-btn {
+  position: relative;
+  left: 90px;
+  margin-top: 2px;
+  margin-bottom: 2px;}

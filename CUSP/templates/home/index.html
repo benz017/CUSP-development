@@ -10,21 +10,23 @@
     <!-- ========== Title ========== -->
     <title>CUSP</title>
 
-        {% load static %}
+    {% load static %}
     <!-- ========== Favicon Ico ========== -->
     <link rel="icon" href="{% static 'favicon-32x32.png' %}">
     <!-- ========== STYLESHEETS ========== -->
     <!-- Bootstrap CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Fonts Icon CSS -->
-    <link href="{% static 'css/font-awesomevent.last.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/et-linevent.last.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/et-line.css' %}" rel="stylesheet">
     <link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet">
+    <!-- Fixed sidebar CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Carousel CSS -->
     <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/owl.themevent.last.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet">
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="{% static 'css/animatevent.last.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <!-- Custom styles for this template -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
@@ -58,14 +60,66 @@
                 <li class="nav-item">
                     <a class="nav-link " href="contact-us">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a href="login" id="login-btn" class="btn btn-primary btn-rounded nav-link">Sign Up/Login</a>
+                </li>
             </ul>
         </div>
     </div>
 </header>
 <!--header end here-->
 
-<!--cover section slider -->
+<!-- ./icon sidebar -->
 <section id="home" class="home-cover">
+<div id = "icon-bar" class="icon-bar">
+  <a href="https://www.instagram.com/cusp_axis/" target="_blank" class="sidebar-icon" title="Instagram"><i class="fa fa-instagram"></i></a>
+  <a href="https://www.facebook.com/CUSP-Culturally-Unified-for-Science-and-Peace-101492801418812/" target="_blank" class="sidebar-icon" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <a href="#" class="sidebar-icon" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+  <a href="#" class="sidebar-icon" id="Signup" title="Sign Up" ><i class="fa fa-users"></i></a>
+  <a href="#" class="sidebar-icon" id="Login" title="Log In" ><i class="fa fa-sign-in"></i></a>
+</div>
+<script>
+$(document).ready(function () {
+
+     // Attach Button click event listener 
+    $("#Signup").click(function(){
+
+         // show Modal
+         $('#myModal').modal('show');
+    });
+});
+</script>
+
+<!-- Modal -->
+
+
+<!-- Modal -->
+
+<!-- ./subscribe Modal -->
+<div class="modal fade text-center py-5 subscribeModal-lg"  id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2 id="greet-text">Greetings from CUSP</h2>
+                <h3 class="pt-5 mb-0 text-secondary">Subscribe to get the FREE tool to Mindfulness right now</h3>
+                <p class="pb-1 text-muted">Sign up to get updated with our latest sessions and products.</p>
+                <form>
+                    <div class="input-group mb-3 w-75 mx-auto">
+    				  <input type="email" class="form-control" placeholder="sunlimetech@gmail.com" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+    				  <div class="input-group-append">
+    					<button class="btn btn-primary" type="button" id="button-addon2"><i class="fa fa-paper-plane"></i></button>
+    				  </div>
+    				</div>
+    			</form>
+                <p class="pb-1">Your email is safe with us. We won't spam.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./subscribe Modal -->
+
+<!--cover section slider -->
     <div class="cover_slider owl-carousel owl-theme">
         <div class="cover_item" style="background: url({% static 'img/bg/slider.jpg' %});">
              <div class="slider_content">
@@ -259,7 +313,7 @@
         <div class="row justify-content-center mt30">
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="icon_box_one">
-                    <i class="lnr lnr-smile"></i>
+                    <i class="icon ion-ios-body-outline"></i>
                     <div class="content">
                         <h4>Instructors</h4>
                         <p>
@@ -272,7 +326,7 @@
 
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="icon_box_one">
-                    <i class="lnr lnr-sun"></i>
+                    <i class="icon ion-leaf"></i>
                     <div class="content">
                         <h4>Outdoors</h4>
                         <p>
@@ -285,7 +339,7 @@
 
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="icon_box_one">
-                    <i class="lnr lnr-clock"></i>
+                    <i class="icon ion-ios-time"></i>
                     <div class="content">
                         <h4>Time</h4>
                         <p>
@@ -298,7 +352,7 @@
 
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="icon_box_one">
-                    <i class="lnr lnr-star"></i>
+                    <i class="icon ion-ios-alarm"></i>
                     <div class="content">
                         <h4>Early Bird</h4>
                         <p>
@@ -340,6 +394,7 @@
                     </div>
                     <div class="price_footer">
                         <!--button id='rzp-button1' class="btn btn-primary btn-rounded">Purchase</button-->
+                        {% csrf_token %}
                         <form action="pay" method="POST">
                         <script
                             src="https://checkout.razorpay.com/v1/checkout.js"
@@ -378,6 +433,7 @@
                         <sup>INR</sup>
                     </div>              
                     <div class="price_footer">
+                    {% csrf_token %}
                         <form action="pay" method="POST">
                         <script
                             src="https://checkout.razorpay.com/v1/checkout.js"
@@ -418,6 +474,7 @@
                         <sup>INR</sup>
                     </div>                
                     <div class="price_footer">
+                    {% csrf_token %}
                         <form action="pay" method="POST">
                         <script
                             src="https://checkout.razorpay.com/v1/checkout.js"
@@ -640,7 +697,7 @@
                                 <a href="#"><i class="ion-social-twitter"></i></a>
                             </li-->
                             <li>
-                                <a href="https://www.instagram.com/cuspaxis/" target="_blank"><i class="ion-social-instagram"></i></a>
+                                <a href="https://www.instagram.com/cusp_axis/" target="_blank"><i class="ion-social-instagram"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -655,7 +712,7 @@
                         </h4>
                     </div>
                     <div class="footer_box_body">
-                        <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/049d5aae546f54d1850a4a3b6e92d249.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+                        <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/4ef487abd08753c485aa1704ca97c724.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
                     </div>
                 </div>
             </div>
@@ -700,6 +757,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <!-- jquery -->
 <script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate.js' %}"></script>
 <!-- bootstrap -->
 <script src="{% static 'js/popper.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
