@@ -11,6 +11,7 @@
     <title>CUSP</title>
 
     {% load static %}
+    {% load custom_tags %}
     <!-- ========== Favicon Ico ========== -->
     <link rel="icon" href="{% static 'favicon-32x32.png' %}">
     <!-- ========== STYLESHEETS ========== -->
@@ -29,6 +30,7 @@
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <!-- Custom styles for this template -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <script src="{% static 'js/calender.js' %}" async defer></script>
 
 </head>
 <body>
@@ -49,7 +51,7 @@
                     <a class="nav-link active" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="events">Events</a>
+                    <a class="nav-link " href="events">Experience</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="products">Products</a>
@@ -57,12 +59,18 @@
                 <li class="nav-item">
                     <a class="nav-link " href="blogs">Blogs</a>
                 </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="accounts/dashboard">Hello, {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="accounts/signout" id="logout-btn" class="btn btn-primary btn-rounded">Sign Out</a>
+                    </li>
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link " href="contact-us">Contact</a>
+                    <a href="accounts/signup" id="login-btn" class="btn btn-primary btn-rounded">Sign Up/In</a>
                 </li>
-                <li class="nav-item">
-                    <a href="login" id="login-btn" class="btn btn-primary btn-rounded nav-link">Sign Up/Login</a>
-                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -72,29 +80,18 @@
 <!-- ./icon sidebar -->
 <section id="home" class="home-cover">
 <div id = "icon-bar" class="icon-bar">
-  <a href="https://www.instagram.com/cusp_axis/" target="_blank" class="sidebar-icon" title="Instagram"><i class="fa fa-instagram"></i></a>
+  <a href="https://www.instagram.com/cuspaxis/" target="_blank" class="sidebar-icon" title="Instagram"><i class="fa fa-instagram"></i></a>
   <a href="https://www.facebook.com/CUSP-Culturally-Unified-for-Science-and-Peace-101492801418812/" target="_blank" class="sidebar-icon" title="Facebook"><i class="fa fa-facebook"></i></a>
   <a href="#" class="sidebar-icon" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
-  <a href="#" class="sidebar-icon" id="Signup" title="Sign Up" ><i class="fa fa-users"></i></a>
-  <a href="#" class="sidebar-icon" id="Login" title="Log In" ><i class="fa fa-sign-in"></i></a>
+  <a href="accounts/signup" class="sidebar-icon" id="Signup" title="Sign Up" ><i class="fa fa-users"></i></a>
+  <a href="accounts/signin" class="sidebar-icon" id="Login" title="Log In" ><i class="fa fa-sign-in"></i></a>
 </div>
-<script>
-$(document).ready(function () {
-
-     // Attach Button click event listener 
-    $("#Signup").click(function(){
-
-         // show Modal
-         $('#myModal').modal('show');
-    });
-});
-</script>
 
 <!-- Modal -->
 
 
 <!-- Modal -->
-
+{% if request.user.is_authenticated == False %}
 <!-- ./subscribe Modal -->
 <div class="modal fade text-center py-5 subscribeModal-lg"  id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -118,9 +115,9 @@ $(document).ready(function () {
     </div>
 </div>
 <!-- ./subscribe Modal -->
-
+{% endif %}
 <!--cover section slider -->
-    <div class="cover_slider owl-carousel owl-theme">
+    <div class="cover_slider owl-carousel owl-theme ">
         <div class="cover_item" style="background: url({% static 'img/bg/slider.jpg' %});">
              <div class="slider_content">
                 <div class="slider-content-inner">
@@ -188,321 +185,18 @@ $(document).ready(function () {
                 </div>
             </div>
         </div>
+
     </div>
-    <div class="cover_nav">
-        <ul class="cover_dots">
-            <li class="active" data-slide="0"><span>1</span></li>
-            <li  data-slide="1"><span>2</span></li>
-            <li  data-slide="2"><span>3</span></li>
-        </ul>
-    </div>
+
+
 </section>
-<!--cover section slider end -->
-
-<!--event info -->
-<section class="pt100 pb100">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-6 col-md-3  ">
-                <div class="icon_box_two">
-                    <i class="ion-ios-calendar-outline"></i>
-                    <div class="content">
-                        <h5 class="box_title">
-                            DATE
-                        </h5>
-                        <p>
-                            {{span}}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3  ">
-                <div class="icon_box_two">
-                    <i class="ion-ios-location-outline"></i>
-                    <div class="content">
-                        <h5 class="box_title">
-                            location
-                        </h5>
-
-                        <p>
-                            {{ event.last.location }}
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3  ">
-                <div class="icon_box_two">
-                    <i class="ion-ios-person-outline"></i>
-                    <div class="content">
-                        <h5 class="box_title">
-                            instructor
-                        </h5>
-                        <p>
-                            
-                                {{event.last.instructors}}
-                            
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3  ">
-                <div class="icon_box_two">
-                    <i class="ion-ios-pricetag-outline"></i>
-                    <div class="content">
-                        <h5 class="box_title">
-                            tickets
-                        </h5>
-                        <p>
-                            
-                            {{solo}}
-                        
-                             INR
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--div class="container" style="position:absolute;left:570px;top:700px;z-index:100;">
+    <div style="display:grid;">
+    <iframe width="800" height="500" src="https://www.youtube.com/embed/tgbNymZ7vqY" style="display:grid;background:white;">
+    </iframe>
+    <div style="display:grid;background:black;padding:5px;width:800px;"></div>
     </div>
-</section>
-<!--event info end -->
-
-
-<!--event countdown -->
-<section class="bg-img pt70 pb70" style="background-image: url({{event.last.event_pic.url}});">
-    <div class="overlay_dark"></div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <h4 class="mb30 text-center color-light">Counter until the big event</h4>
-                <div class="countdown">
-                    </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--event count down end-->
-
-
-<!--about the event -->
-<section id="eventinfo" class="pt100 pb100">
-    <div class="container">
-        <div class="section_title">
-            <h3 class="title">
-                About the event
-            </h3>
-        </div>
-        <div id="about-event" class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <p>
-                    {{about_1}}
-                </p>
-            </div>
-            <div class="col-12 col-md-6">
-                <p>
-                    {{about_2}}
-                </p>
-            </div>
-        </div>
-
-        <!--event features-->
-        <div class="row justify-content-center mt30">
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="icon_box_one">
-                    <i class="icon ion-ios-body-outline"></i>
-                    <div class="content">
-                        <h4>Instructors</h4>
-                        <p>
-                            {{event.last.about_instructor}}
-                        </p>
-                        <!--a href="#">read more</a-->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="icon_box_one">
-                    <i class="icon ion-leaf"></i>
-                    <div class="content">
-                        <h4>Outdoors</h4>
-                        <p>
-                            This session is intrinsically tailored for rejuvenating your mind and body in resonance with the nature.
-                        </p>
-                        <!--a href="#">read more</a-->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="icon_box_one">
-                    <i class="icon ion-ios-time"></i>
-                    <div class="content">
-                        <h4>Time</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus massa nec graviantevent.last.
-                        </p>
-                        <!--a href="#">read more</a-->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="icon_box_one">
-                    <i class="icon ion-ios-alarm"></i>
-                    <div class="content">
-                        <h4>Early Bird</h4>
-                        <p>
-                           Register early and get yourself a <strong id="dis">{{event.last.earlybird_discount}}%</strong> discount till {{event.last.earlybird_last_date}}. <strong><br>Grab your tickets right now!!</strong>
-                        </p>
-                        <!--a href="#">read more</a-->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--event features end-->
-    </div>
-</section>
-<!--about the event end -->
-<!--Price section-->
-<section class="pb100">
-    <div class="container">
-        <div class="section_title mb50">
-            <h3 class="title">
-                Pricing table
-            </h3>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-4 col-12">
-                <div class="price_box">
-                    
-                   <div class="price_header">
-                       <h4>
-                           Solo
-                       </h4>
-                       <h6>
-                           For single's entry
-                       </h6>
-                   </div>
-                    <div class="price_tag">
-                            {{solo}}
-                        <sup>INR</sup>
-                    </div>
-                    <div class="price_footer">
-                        <!--button id='rzp-button1' class="btn btn-primary btn-rounded">Purchase</button-->
-                        {% csrf_token %}
-                        <form action="pay" method="POST">
-                        <script
-                            src="https://checkout.razorpay.com/v1/checkout.js"
-                            data-key="rzp_test_WyK93y9mvps7SN"
-                            data-amount="{{solo}}00"
-                            data-name="{{ event.last.name }}"
-                            data-image="{% static 'img/logo-192.png' %}"
-                            data-buttontext="Purchase"
-                            data-description="Experience"
-                            data-netbanking="true"
-                            data-prefill.name=""
-                            data-prefill.email=""
-                            data-prefill.contact=""
-                            data-notes.shopping_order_id="1"
-                            data-theme.color="#00C8A3">
-                        </script>
-                        <input type="hidden" name="shopping_order_id" value="21">
-                    </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-12">
-                <div class="price_box">
-                    <div class="price_header">
-                        <h4>
-                            Duet
-                        </h4>
-						
-                        <h6>
-                            For couple entry
-                        </h6>
-                    </div>
-                    <div class="price_tag">
-                        
-                            {{duet}}
-                        <sup>INR</sup>
-                    </div>              
-                    <div class="price_footer">
-                    {% csrf_token %}
-                        <form action="pay" method="POST">
-                        <script
-                            src="https://checkout.razorpay.com/v1/checkout.js"
-                            data-key="rzp_test_WyK93y9mvps7SN"
-                            data-amount="{{duet}}00"
-                            data-name="{{ event.last.name }}"
-                            data-image="{% static 'img/logo-192.png' %}"
-                            data-buttontext="Purchase"
-                            data-description="Experience"
-                            data-netbanking="true"
-                            data-prefill.name="A"
-                            data-prefill.email="A"
-                            data-prefill.contact="A"
-                            data-notes.shopping_order_id="1"
-                            data-theme.color="#00C8A3">
-                        </script>
-                        <input type="hidden" name="shopping_order_id" value="21">
-                    </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-12">
-                <div class="price_box">
-					<div class="price_highlight">
-                        recommended
-                    </div>
-                    <div class="price_header">
-                        <h4>
-                            Tribe
-                        </h4>
-                        <h6>
-                            For group entry (3-5)
-                        </h6>
-                    </div>
-                    <div class="price_tag">
-                        
-                            {{tribe}}
-                        <sup>INR</sup>
-                    </div>                
-                    <div class="price_footer">
-                    {% csrf_token %}
-                        <form action="pay" method="POST">
-                        <script
-                            src="https://checkout.razorpay.com/v1/checkout.js"
-                            data-key="rzp_test_WyK93y9mvps7SN"
-                            data-amount="{{tribe}}00"
-                            data-name="{{ event.last.name }}"
-                            data-image="{% static 'img/logo-192.png' %}"
-                            data-buttontext="Purchase"
-                            data-description="Experience"
-                            data-netbanking="true"
-                            data-prefill.name=""
-                            data-prefill.email=""
-                            data-prefill.contact=""
-                            data-notes.shopping_order_id="1"
-                            data-theme.color="#00C8A3">
-                        </script>
-                        <input type="hidden" name="shopping_order_id" value="21">
-                    </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--price section end -->
-
-
-
+    </div-->
 <!--about CUSP -->
 <section id="aboutus" class="pt100 pb100">
     <div class="container">
@@ -523,7 +217,7 @@ $(document).ready(function () {
                 </ul>
 
 
-                <p>We believe fitness should complement mindfulness, and vice versa. Although the gym helps an individual with toned and muscular bodies, it's the mind he/she is actually training; the former being a byproduct, an amazing one none the less! Hence our community is on a journey to bring physical fitness and mindfulness on the same pagevent.last. Our session are from various fields, few examples are <strong><u>Movement Culture</u>, <u>Dance Movement Rejuvenation</u>, <u>Yoga</u>, <u>Sound Bath</u>,</strong> etc; all of them however serving the same goal: <br><br><strong>Going back with a fitter body and peaked mind!</strong><br><br>
+                <p>We believe fitness should complement mindfulness, and vice versa. Although the gym helps an individual with toned and muscular bodies, it's the mind he/she is actually training; the former being a byproduct, an amazing one none the less! Hence our community is on a journey to bring physical fitness and mindfulness on the same pagevent.first. Our session are from various fields, few examples are <strong><u>Movement Culture</u>, <u>Dance Movement Rejuvenation</u>, <u>Yoga</u>, <u>Sound Bath</u>,</strong> etc; all of them however serving the same goal: <br><br><strong>Going back with a fitter body and peaked mind!</strong><br><br>
                     Did you know? <strong>We prefer open-air session on grass</strong> due to it's playfulness (sparks creativity) and calming qualities!
                 </p>
             </div>
@@ -547,51 +241,169 @@ $(document).ready(function () {
     </div>
 </section>
 <!--about the event end -->
+<!--cover section slider end -->
+    <div class="container register" style="max-width:100%;">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3 style="color:white;">Welcome</h3>
+                        <p style="color:white;">You are 30 seconds away from earning your own money!</p>
+                        <input type="submit" name="" value="Login"/><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pioneer-tab" data-toggle="tab" data-target="#pioneer" role="tab" >Pioneer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="instructor-tab" data-toggle="tab" data-target="#intructor" role="tab" >Instructor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="donor-tab" data-toggle="tab" data-target="#donor" role="tab" >Donor</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="pioneer" role="tabpanel" aria-labelledby="pioneer-tab">
+                                <h3 class="register-heading">Apply as a Pioneer</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline">
+                                                    <input type="radio" name="gender" value="male" checked>
+                                                    <span> Male </span>
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input type="radio" name="gender" value="female">
+                                                    <span>Female </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" style="height:50px;">
+                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                                <option>What is your Birthdate?</option>
+                                                <option>What is Your old Phone Number</option>
+                                                <option>What is your Pet Name?</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="intructor" role="tabpanel" aria-labelledby="instructor-tab">
+                                <h3  class="register-heading">Apply as a Instructor</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                        </div>
 
-<!--event calender-->
-<section class="pb100">
-    <div class="container">
-        <div class="table-responsive">
-            <table class="event_calender table">
-                <thead class="event_title">
-                <tr>
-                    <th>
-                        <i class="ion-ios-calendar-outline"></i>
-                        <span>events calendar</span>
-                    </th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for e in event|slice:":3" reversed %}
-                <tr>
-                    <td>
-                        <img src="{{e.event_thumbnail.url}}" alt="event">
-                    </td>
-                    <td class="event_date">
-                        {{ e.start_date|date:"j" }}
-                        <span>{{e.start_date|date:"F"}}</span>
-                    </td>
-                     <td>
-                        <div class="event_place">
-                            <h6>{{ e.start_date|date:"g A" }} - {{ e.end_date|date:"g A" }}</h6>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" style="height:50px;">
+                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                                <option>What is your Birthdate?</option>
+                                                <option>What is Your old Phone Number</option>
+                                                <option>What is your Pet Name?</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="donor" role="tabpanel" aria-labelledby="donor-tab">
+                                <h3  class="register-heading">Apply as a Donor</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" style="height:50px;">
+                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                                <option>What is your Birthdate?</option>
+                                                <option>What is Your old Phone Number</option>
+                                                <option>What is your Pet Name?</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </td>
-                    <td>
-                        <div class="event_place">
-                            <h5>{{e.name}}</h5>
-                            <p>Instructor: {{e.instructors}}</p>
-                        </div>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
+                    </div>
+                </div>
+
+            </div>
+
+
+
 <!--event calender end -->
 
 <!--brands section -->
@@ -697,7 +509,7 @@ $(document).ready(function () {
                                 <a href="#"><i class="ion-social-twitter"></i></a>
                             </li-->
                             <li>
-                                <a href="https://www.instagram.com/cusp_axis/" target="_blank"><i class="ion-social-instagram"></i></a>
+                                <a href="https://www.instagram.com/cuspaxis/" target="_blank"><i class="ion-social-instagram"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -775,7 +587,34 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Custom js -->
 <script>
     var start_time = '{{ start_time }}';
+    {% if user.is_authenticated == False %}
+    $('.razor-form').submit(function(e){
+      window.location.replace("https://cusp.community:8000/accounts/signup");
+      $ID = $(this).attr("id");
+      $script = $ID.concat("script");
+      $order_id = $('#'+$script).attr("data-order_id");
+       $.ajax(
+        {
+        type:"GET",
+        url: "{% url 'index' %}",
+        data:{
+            order_id: $order_id
+        },
+        success: function(data){
+
+        }
+     });
+});
+{% endif %}
 </script>
+
+        {% if success %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#triggModal").click();
+        });
+    </script>
+    {% endif %}
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/subscriberform.js' %}"></script>
 <script src="{% static 'js/smooth-scroll.js' %}"></script>

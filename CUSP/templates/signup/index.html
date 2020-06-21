@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+{% load socialaccount %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if action == "signup" %}
+    <title>Sign Up</title>
+    {% elif action == "login" %}
+    <title>Log In</title>
+    {% endif %}
+     {% load static %}
+     
+     <link rel="icon" href="{% static 'favicon-32x32.png' %}">
+    <!-- Font Icon -->
+    
+    <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% block body %}
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    {% if action == "signup" %}
+                    <form method="POST" id="signup-form" class="signup-form" action="{% url 'signup' %}">
+                    <h2 class="form-title">Create account</h2>
+                    {% elif action == "login" %}
+                    <form method="POST" id="signup-form" class="signup-form" action="{% url 'signin' %}">
+                    <h2 class="form-title">Welcome Back</h2>
+                    {% endif %}
+                    {% csrf_token %}
+                        
+                        {% for field in form %}
+   
+                        <div class="form-group">
+                            {{ field }}
+                            {% for error in field.errors %}
+                              <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                            {% if forloop.last and action == "signup" %}
+                                <label for="terms" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            {% endif %}
+                        </div>
+
+                        {% endfor %}
+                        {% if action == "signup" %}                   
+                            <div class="form-group">                      
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign Up"/>
+                            </div>
+                        {% for message in messages %}
+                        <h4>{{message}}</h4>
+                        {% endfor %}
+                         </form>
+                        <div style="width: 100%; height: 17px; border-bottom: 1px solid black; text-align: center; display:inline-block;">
+                                <span style="font-size: 21px; background-color: #fff; opacity=0.95; padding: 0 10px 0 10px; text-align:center;">
+                            OR <!--Padding is optional-->
+                          </span>
+                        </div>
+                        <h3 style="text-align:center; ">Join with</h3>
+                        <div class="col-md-12" id="social-login">
+                          <ul class="social-network social-circle">
+                            <li><a href="{% provider_login_url 'facebook' method='oauth2' %}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                               <li><a href="{% provider_login_url 'google' %}" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                          </ul>
+                        </div>
+                        <p class="loginhere">
+                        Already have an account ? <a href="signin" class="loginhere-link">Sign In</a>
+                        </p>
+                        {% elif action == "login" %}
+                        <div class="form-group">
+                            <input type="submit" name="submit" id='submit' class="form-submit" value="Sign In"/>
+                        </div>
+                        {% for message in messages %}
+                        <h4>{{message}}</h4>
+                        {% endfor %}
+                        
+                            </form>
+                    <div style="width: 100%; height: 17px; border-bottom: 1px solid black; text-align: center; display:inline-block;">
+                                <span style="font-size: 21px; background-color: #fff; opacity=0.95; padding: 0 10px 0 10px; text-align:center;">
+                            OR <!--Padding is optional-->
+                          </span>
+                        </div>
+                        <h3 style="text-align:center; ">Sign In with</h3>
+                        <div class="col-md-12" id="social-login">
+                          <ul class="social-network social-circle">
+                            <li><a href="{% provider_login_url 'facebook' method='oauth2' %}" class="icoFacebook" title="Facebook" ><i class="fa fa-facebook"></i></a></li>
+                               <li><a href="{% provider_login_url 'google' %}" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                          </ul>
+                        </div>
+                        <p class="loginhere">
+                        Do not have an account ? <a href="signup" class="loginhere-link">Sign Up</a>
+                        </p>
+                        {% endif %}
+
+                </div>
+            </div>
+        </section>
+
+        
+
+    </div>
+
+    <!-- JS -->
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

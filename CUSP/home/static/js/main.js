@@ -20,6 +20,7 @@
   =============================================== */
 'use strict';
 $("#icon-bar").hide().fadeIn(4000);
+
 setTimeout(function(){
     $('.subscribeModal-lg').modal('show');
 }, 1000);
@@ -31,7 +32,7 @@ $(window).load(function() {
 
 $(document).ready(function() {
     'use strict';
-    
+
     /* ==============================================
      /*   wow
       =============================================== */
@@ -122,7 +123,20 @@ $(document).ready(function() {
         offset: '50%'
     });
 
+    (function($) {
 
+        $(".toggle-password").click(function() {
+    
+            $(this).toggleClass("zmdi-eye zmdi-eye-off");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+              input.attr("type", "text");
+            } else {
+              input.attr("type", "password");
+            }
+          });
+    
+    })(jQuery);
         /* --------------------------------------------------------
     MAPS
     ----------------------------------------------------------- */

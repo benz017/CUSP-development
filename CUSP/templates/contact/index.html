@@ -157,7 +157,7 @@
                 <div class="form">
               <div id="sendmessage">Your message has been sent. Thank you!</div>
               <div id="errormessage"></div>
-              <form action="." method="POST" role="form" id='form' data-url='{{ request.build_absolute_uri|safe }}' data-toggle="modal" onsubmit="return validateForm()">
+                  <form action="." method="POST" role="form" id='form' data-url='{{ request.build_absolute_uri|safe }}' data-toggle="modal" onsubmit="return validateForm()">
                 {% csrf_token %}
                   {{ form.as_p }}
                   <div class="form-row">

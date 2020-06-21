@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,20 +24,40 @@ SECRET_KEY = 'xlfuzmjvp#7qdap98wnof(+#(@fvk-9dou%+^=7npx)7ob)j%l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cusp.community']
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'greenglobe.live@gmail.com'
 EMAIL_HOST_PASSWORD = '1Step_Closer'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-RAZOR_PAY_KEY = 'rzp_live_aA5XqHZ0PFLZ2K'
-RAZOR_PAY_SECRET_KEY = 'RvCItS7vNK8h2NaTx9oVtUEV'
+RAZOR_PAY_API = 'https://api.razorpay.com/v1'
+RAZOR_PAY_KEY = 'rzp_test_B6VZbXYKqGebNh'
+RAZOR_PAY_SECRET_KEY = 'R9119fSHs00gQfhewsfJJUvg'
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = ACCOUNT_EMAIL_REQUIRED
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+SOCIAL_AUTH_FACEBOOK_KEY ='2549096228753417'  #Paste CLient Key
+SOCIAL_AUTH_FACEBOOK_SECRET = '152557b3c0f8af641ea4b1d923210319' #Paste Secret Key
+GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyC3tL88rr2_RhB_FmRhNTJDDtlTvZJShkE'
+
 # Application definition
 
 INSTALLED_APPS = [
     'home',
-    'contact',
+    'six',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.instagram',
+    'sslserver',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,6 +94,11 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 WSGI_APPLICATION = 'CUSP.wsgi.application'
 
 
@@ -84,7 +108,7 @@ WSGI_APPLICATION = 'CUSP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'CUSP_datastore',
+        'NAME': 'CUSP_DB',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost'
@@ -116,21 +140,29 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
+
+AWESOME_AVATAR = {
+    'width': 150,
+    'height': 150,
+    'select_area_width': 400,
+    'select_area_height': 300,
+    'save_quality': 90,
+    'save_format': 'png',
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"home", "static"),
-    os.path.join(BASE_DIR,"contact", "static"),
 ]
 
 MEDIAFILES_DIRS = [
@@ -144,3 +176,76 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_URL = "/accounts/signin"
+LOGIN_REDIRECT_URL = "/"
+
+SITE_ID = 7
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_USERNAME_REQURIED=True
+# Provider specific settings
+
+SOCIALACCOUNT_PROVIDERS = {'facebook':{'METHOD': 'oauth2',
+        'SCOPE': ['email','public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'kr_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.4'},
+        'google': {
+            'SCOPE': [
+                'profile',
+                'email',
+            ],
+            'AUTH_PARAMS': {
+                'access_type': 'online',
+            }
+        }
+        }
+
+GEOPOSITION_MAP_OPTIONS = {
+    'minZoom': 3,
+    'maxZoom': 15,
+}
+
+GEOPOSITION_MARKER_OPTIONS = {
+    'cursor': 'move'
+}
+
+LOCATION_FIELD_PATH = STATIC_URL + 'location_field'
+LOCATION_FIELD = {
+    'map.provider': 'google',
+    'map.zoom': 13,
+    'search.provider': 'google',
+    'search.suffix': '',
+    # Google
+    'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+    'provider.google.api_key': 'AIzaSyC3tL88rr2_RhB_FmRhNTJDDtlTvZJShkE',
+    'provider.google.api_libraries': '',
+    'provider.google.map.type': 'ROADMAP',
+    # Mapbox
+    'provider.mapbox.access_token': '',
+    'provider.mapbox.max_zoom': 18,
+    'provider.mapbox.id': 'mapbox.streets',
+    # OpenStreetMap
+    'provider.openstreetmap.max_zoom': 18,
+    # misc
+    'resources.root_path': LOCATION_FIELD_PATH,
+    'resources.media': {
+        'js': (
+         LOCATION_FIELD_PATH + '/js/form.js',
+            ),
+    },
+}

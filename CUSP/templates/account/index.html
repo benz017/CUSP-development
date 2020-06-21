@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+    {% load static %}
+    <!-- ========== Favicon Ico ========== -->
+    <link rel="icon" href="{% static 'favicon-32x32.png' %}">
+    <!-- Fontfaces CSS-->
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'css/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/jqvmap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/croppie.css' %}" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+{% block body %}
+    <div class="page-wrapper">
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar2">
+            <div class="logo">
+                <a href="#">
+                    <img src="{% static 'img/logo-sm-white.png' %}" alt="Cool Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar2__content js-scrollbar2">
+                <div class="account2">
+                    <div class="image img-cir img-120 avatar-border">
+                        <img src="{{avatar}}" alt="John Doe" />
+                    </div>
+
+                    <h4 class="name">{{ request.user.profile.first_name }} {{ request.user.profile.last_name }}</h4>
+                    <a href="{% url 'signout' %}">Sign out</a>
+                </div>
+                <nav class="navbar-sidebar2">
+                    <ul class="list-unstyled navbar__list">
+                         <li>
+                            <a href="{% url 'index' %}">
+                                <i class="fas fa-home"></i>Home</a>
+                        </li>
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="my-orders">
+                                <i class="fas fa-suitcase"></i>My Orders</a>
+                        </li>
+                        <li>
+                            <a href="my-calender">
+                                <i class="fas fa-calendar-alt"></i>My Calender</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop2">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap2">
+                            <div class="logo d-block d-lg-none">
+                                <a href="#">
+                                    <img src="{% static 'img/logo-sm-white.png' %}" alt="CoolAdmin">
+                                </a>
+                            </div>
+                            <div class="header-button2">
+                                <div class="header-button-item has-noti js-item-menu">
+                                    <i class="zmdi zmdi-notifications"></i>
+                                    <div class="notifi-dropdown js-dropdown">
+                                        <div class="notifi__title">
+                                            <p>You have 3 Notifications</p>
+                                        </div>
+                                        <div class="notifi__item">
+                                            <div class="bg-c1 img-cir img-40">
+                                                <i class="zmdi zmdi-email-open"></i>
+                                            </div>
+                                            <div class="content">
+                                                <p>You got a email notification</p>
+                                                <span class="date">April 12, 2018 06:50</span>
+                                            </div>
+                                        </div>
+                                        <div class="notifi__item">
+                                            <div class="bg-c2 img-cir img-40">
+                                                <i class="zmdi zmdi-account-box"></i>
+                                            </div>
+                                            <div class="content">
+                                                <p>Your account has been blocked</p>
+                                                <span class="date">April 12, 2018 06:50</span>
+                                            </div>
+                                        </div>
+                                        <div class="notifi__item">
+                                            <div class="bg-c3 img-cir img-40">
+                                                <i class="zmdi zmdi-file-text"></i>
+                                            </div>
+                                            <div class="content">
+                                                <p>You got a new file</p>
+                                                <span class="date">April 12, 2018 06:50</span>
+                                            </div>
+                                        </div>
+                                        <div class="notifi__footer">
+                                            <a href="#">All notifications</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="header-button-item mr-0 js-sidebar-btn">
+                                    <i class="zmdi zmdi-menu"></i>
+                                </div>
+                                <div class="setting-menu js-right-sidebar d-none d-lg-block">
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-account"></i>Account</a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb m-t-75">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-md-4" >
+                                <p style="margin-top:10px; "><strong style="color:#1c7cd7;">Profile Strength:</strong> <span style="font-weight:600; font-size:18px; ">{{ps}}</span></p>
+                            </div>
+                            <div class="col-md-8">
+                                    <button class="au-btn au-btn-icon au-btn--green" data-toggle="modal" data-target="#scrollmodal" style="float:right; position:relative; top:17px;">
+                                        <i class="zmdi zmdi-plus"></i>Update Profile</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-9">
+                                    <div class="progress mb-3" style="position:relative; bottom:7px;">
+											<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{psp}}%; background-color:#1c7cd7!important;  animation-direction: reverse;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- END BREADCRUMB-->
+            <div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="modal-title" id="scrollmodalLabel" style="text-align:center;">About Me</h3>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+                    <div class="card">
+                                    <div class="card-body card-block" style="overflow-x:auto;">
+                                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" id="profile-form">
+                                            {% csrf_token %}
+                                            <div class="pagescroll">
+                                            <div class="avatar-wrapper">
+                                                <div class="image-cropper">
+                                            	<img class="profile-pic" id="avatar" src="{{avatar}}" />
+                                                </div>
+                                            	<div class="upload-button">
+                                            		<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                                            	</div>
+                                            	<input class="file-upload" type="file" accept="image/*"/>
+
+                                            </div>
+
+
+                                            <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="first-name" class=" form-control-label">First Name</label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="first-name" name="first-name" class="form-control" value="{{ first_name}}">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="last-name" class=" form-control-label">Last Name</label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="last-name" name="last-name" class="form-control" value="{{ last_name}}">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="username" class=" form-control-label">Username</label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="username" name="username" class="form-control" value="{{ username}}" readonly>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="email" class=" form-control-label">My Email ID: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="email" name="email" class="form-control" value="{{ email }}" readonly>
+                                                    
+                                                </div>
+                                            </div>
+                                             <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="contact" class=" form-control-label">My Contact Number: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="contact" name="contact"  class="form-control" value="{{ contact_number }}">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="datetime" class=" form-control-label">My Date of Birth: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="date" id="datetime" name="datetime"  class="form-control" value="{{ dob }}">
+
+                                                </div>
+                                            </div>
+                                                <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="location" class=" form-control-label">My Address: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="location" name="location"  class="form-control" value="{{location}}">
+
+                                                </div>
+                                            </div>
+                                                <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="profession" class=" form-control-label">My Profession: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="profession" name="profession"  class="form-control" value="{{profession}}">
+
+                                                </div>
+                                                     </div>
+
+
+                                            </div>
+                                            <div class="pagescroll">
+                                                <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="emp-status" class=" form-control-label">My Employment Status: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <select id="emp-status" name="emp-status"  class="form-control" style="text-align:center; padding: .375rem .75rem;">
+                                                        <option value="0">Please select</option>
+                                                        <option value="1">Salaried</option>
+                                                        <option value="2">Business Owner</option>
+                                                        <option value="3">Student</option>
+                                                    </select>
+
+                                                </div>
+                                                     </div>
+                                                <div class="add-row">
+                                                    {% if not physical_activities %}
+                                                     <div class="row form-group added" >
+
+                                                <div class="col col-md-4">
+                                                    <label for="activities" class=" form-control-label">My Physical Activities: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="activities" name="activities"  class="form-control" value="">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+
+                                                </div>
+                                                 </div>
+                                                    {% else %}
+
+                                                    {% for physical_activity in physical_activities %}
+                                                 <div class="row form-group added" >
+                                                     {% if forloop.first %}
+                                                <div class="col col-md-4">
+                                                    <label for="activities" class=" form-control-label">My Physical Activities: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="activities" name="activities"  class="form-control" value="{{physical_activity}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+
+                                                </div>
+                                                     {% else %}
+                                                     <div class="col col-md-4"></div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="activities" name="activities"  class="form-control" value="{{physical_activity}}">
+                                                    <span><a href="#" class="remove-btn" style="position: absolute; right: 25px; top: 0px; font-size:30px; color:red;" >-</a></span>
+                                                </div>
+                                                    {% endif %}
+                                                 </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </div>
+
+                                                    <div class="add-row">
+                                                        {% if not health_problems %}
+                                                         <div class="row form-group added" >
+                                                <div class="col col-md-4">
+                                                    <label for="health" class=" form-control-label">Chronic Ailments/Injuries: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="health" name="health"  class="form-control" value="{{health_problem}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+
+                                                </div>
+                                                         </div>
+                                                             {% else %}
+                                                {% for health_problem in health_problems %}
+                                                 <div class="row form-group added" >
+                                                     {% if forloop.first %}
+                                                <div class="col col-md-4">
+                                                    <label for="health" class=" form-control-label">Chronic Ailments/Injuries: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="health" name="health"  class="form-control" value="{{health_problem}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+
+                                                </div>
+                                                     {% else %}
+                                                     <div class="col col-md-4"></div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="health" name="health"  class="form-control" value="{{health_problem}}">
+                                                    <span><a href="#" class="remove-btn" style="position: absolute; right: 25px; top: 0px; font-size:30px; color:red;" >-</a></span>
+
+                                                </div>
+                                                     {% endif %}
+                                                </div>
+                                                        {% endfor %}
+                                                             {% endif %}
+                                                    </div>
+
+                                                <div class="add-row">
+                                                    {% if not passion %}
+                                                    <div class="row form-group added" >
+                                                <div class="col col-md-4">
+                                                    <label for="passion" class=" form-control-label">Passion: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="passion" name="passion"  class="form-control" value="">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+                                                </div>
+                                                    </div>
+                                                    {% else %}
+                                                 {% for pass in passion %}
+                                                 <div class="row form-group added" >
+                                                     {% if forloop.first %}
+                                                <div class="col col-md-4">
+                                                    <label for="passion" class=" form-control-label">Passion: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="passion" name="passion"  class="form-control" value="{{pass}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+                                                </div>
+                                                    {% else %}
+                                                    <div class="col col-md-4"></div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="passion" name="passion"  class="form-control" value="{{pass}}">
+                                                    <span><a href="#" class="remove-btn" style="position: absolute; right: 25px; top: 0px; font-size:30px; color:red;" >-</a></span>
+                                                </div>
+
+                                                     {% endif %}
+                                                 </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                 </div>
+
+                                                <div class="add-row">
+                                                    {% if not languages %}
+                                                    <div class="row form-group added" >
+                                                <div class="col col-md-4">
+                                                    <label for="language" class=" form-control-label">Languages I Culture: </label>
+                                                </div>
+
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="language" name="language"  class="form-control" value="">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+                                                </div>
+                                                    </div>
+                                                    {% else %}
+                                                    {% for language in languages %}
+                                                 <div class="row form-group added" >
+                                                     {% if forloop.first %}
+                                                <div class="col col-md-4">
+                                                    <label for="language" class=" form-control-label">Languages I Culture: </label>
+                                                </div>
+
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="language" name="language"  class="form-control" value="{{language}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+                                                </div>
+                                                     {% else %}
+                                                     <div class="col col-md-4"></div>
+                                                    <div class="col-12 col-md-8">
+                                                    <input type="text" id="language" name="language"  class="form-control" value="{{language}}">
+                                                    <span><a href="#" class="remove-btn" style="position: absolute; right: 25px; top: 0px; font-size:30px; color:red;" >-</a></span>
+                                                </div>
+                                                     {% endif %}
+                                                 </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                                <div class="add-row">
+                                                    {% if not places_visited %}
+                                                    <div class="row form-group added" >
+                                                <div class="col col-md-4">
+                                                    <label for="visited" class=" form-control-label">Countries I Visited: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="visited" name="visited"  class="form-control" value="{{places}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+                                                </div>
+                                                    </div>
+                                                    {% else %}
+                                                     {% for places in places_visited %}
+                                                 <div class="row form-group added" >
+                                                     {% if forloop.first %}
+                                                <div class="col col-md-4">
+                                                    <label for="visited" class=" form-control-label">Countries I Visited: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="visited" name="visited"  class="form-control" value="{{places}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+                                                </div>
+                                                     {% else %}
+                                                     <div class="col col-md-4"></div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="visited" name="visited"  class="form-control" value="{{places}}">
+                                                    <span><a href="#" class="remove-btn" style="position: absolute; right: 25px; top: 0px; font-size:30px; color:red;" >-</a></span>
+                                                </div>
+                                                     {% endif %}
+                                                     </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                                <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="diet" class=" form-control-label">My Diet: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <select id="diet" name="diet"  class="form-control" style="text-align:center; padding: .375rem .75rem;">
+                                                        <option value="0">Please select</option>
+                                                        <option value="1">Vegetarian</option>
+                                                        <option value="2">Non-Vegetarian</option>
+                                                        <option value="3">Vegan</option>
+                                                    </select>
+
+                                                </div>
+                                                     </div>
+                                                <div class="add-row">
+                                                    {% if not allergic_food %}
+                                                    <div class="row form-group added" >
+                                                <div class="col col-md-4">
+                                                    <label for="allergy" class=" form-control-label">Allergic Foods/Ingredients: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="allergy" name="allergy"  class="form-control" value="{{allergy}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+
+                                                </div>
+                                                    </div>
+                                                    {% else %}
+                                                {% for allergy in allergic_food %}
+                                                 <div class="row form-group added" >
+                                                     {% if forloop.first %}
+                                                <div class="col col-md-4">
+                                                    <label for="allergy" class=" form-control-label">Allergic Foods/Ingredients: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="allergy" name="allergy"  class="form-control" value="{{allergy}}">
+                                                    <span><a href="#" class="add-btn" style="position: absolute; right: 25px; top: -5px; font-size:30px;" >+</a></span>
+
+                                                </div>
+                                                     {% else %}
+                                                     <div class="col col-md-4"></div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="allergy" name="allergy"  class="form-control" value="{{allergy}}">
+                                                    <span><a href="#" class="remove-btn" style="position: absolute; right: 25px; top: 0px; font-size:30px; color:red;" >-</a></span>
+
+                                                </div>
+                                                     {% endif %}
+                                                     </div>
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                    </div>
+                                                    <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="persona" class=" form-control-label">My Personality: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <select id="persona" name="persona"  class="form-control" style="text-align:center; padding: .375rem .75rem;">
+                                                        <option value="0">Please select</option>
+                                                        <option value="1">Introvert</option>
+                                                        <option value="2">Extrovert</option>
+                                                        <option value="3">Ambivert</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                                <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="rel-status" class=" form-control-label">My Relationship status: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <select id="rel-status" name="rel-status"  class="form-control" style="text-align:center; padding: .375rem .75rem;">
+                                                        <option value="0">Please select</option>
+                                                        <option value="1">Single</option>
+                                                        <option value="2">Married</option>
+                                                        <option value="3">Complicated</option>
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                                <div class="row form-group added">
+                                                <div class="col col-md-4">
+                                                    <label for="bio" class=" form-control-label" >My Bio: </label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <textarea id="bio" name="bio"  class="form-control" rows="4" cols="50">{{bio}}</textarea>
+
+                                                </div>
+                                                </div>
+                                                </div>
+
+
+                                        </form>
+
+
+                                    </div>
+                                            <div class="row form-group added">
+                                                <div class="col col-md-6">
+                                                    <span><i class="fas fa-arrow-circle-left prev" style="float:right; font-size:32px;"></i></span>
+                                                </div>
+                                                <div class="col col-md-6">
+                                                    <span><i class="fas  fa-arrow-circle-right next" style="float:left; font-size:32px;"></i></span>
+                                                </div>
+                                            </div>
+                    </div>
+
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" id="form-submit"><i class="fa fa-dot-circle-o"></i> Submit</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end modal scroll -->
+            <!-- STATISTIC-->
+            <section class="statistic">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">10,368</h2>
+                                    <span class="desc">members online</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-account-o"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">388,688</h2>
+                                    <span class="desc">items sold</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-shopping-cart"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">1,086</h2>
+                                    <span class="desc">this week</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-calendar-note"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">$1,060,386</h2>
+                                    <span class="desc">total earnings</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-money"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END STATISTIC-->
+
+            <section>
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <!-- RECENT REPORT 2-->
+                                <div class="recent-report2">
+                                    <h3 class="title-3">recent reports</h3>
+                                    <div class="chart-info">
+                                        <div class="chart-info__left">
+                                            <div class="chart-note">
+                                                <span class="dot" style="background:#3931af;"></span>
+                                                <span>products</span>
+                                            </div>
+                                            <div class="chart-note">
+                                                <span class="dot"  style="background:#00c6ff;"></span>
+                                                <span>Services</span>
+                                            </div>
+                                        </div>
+                                        <div class="chart-info-right">
+                                            <div class="rs-select2--dark rs-select2--md m-r-10">
+                                                <select class="js-select2" name="property">
+                                                    <option selected="selected">All Properties</option>
+                                                    <option value="">Products</option>
+                                                    <option value="">Services</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                            <div class="rs-select2--dark rs-select2--sm">
+                                                <select class="js-select2 au-select-dark" name="time">
+                                                    <option selected="selected">All Time</option>
+                                                    <option value="">By Month</option>
+                                                    <option value="">By Day</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="recent-report__chart">
+                                        <canvas id="recent-rep2-chart"></canvas>
+                                    </div>
+                                </div>
+                                <!-- END RECENT REPORT 2             -->
+                            </div>
+                            <div class="col-xl-4">
+                                <!-- TASK PROGRESS-->
+                                <div class="task-progress container-fluid">
+                                    <h3 class="title-3">task progress</h3>
+                                    <div class="au-skill-container">
+                                        <div class="au-progress">
+                                            <span class="au-progress__title">Web Design</span>
+                                            <div class="au-progress__bar">
+                                                <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="90">
+                                                    <span class="au-progress__value js-value"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="au-progress">
+                                            <span class="au-progress__title">HTML5/CSS3</span>
+                                            <div class="au-progress__bar">
+                                                <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="85">
+                                                    <span class="au-progress__value js-value"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="au-progress">
+                                            <span class="au-progress__title">WordPress</span>
+                                            <div class="au-progress__bar">
+                                                <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="95">
+                                                    <span class="au-progress__value js-value"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="au-progress">
+                                            <span class="au-progress__title">Support</span>
+                                            <div class="au-progress__bar">
+                                                <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="95">
+                                                    <span class="au-progress__value js-value"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END TASK PROGRESS-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <!-- Bootstrap JS-->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Vendor JS       -->
+    <script src="{% static 'js/slick.min.js' %}">
+    </script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/animsition.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-progressbar.min.js' %}">
+    </script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}">
+    </script>
+    <script src="{% static 'js/circle-progress.min.js' %}"></script>
+    <script src="{% static 'js/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+    <script src="{% static 'js/select2.min.js' %}">
+    </script>
+    <script src="{% static 'js/jquery.vmap.js' %}"></script>
+    <script src="{% static 'js/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.vmap.sampledata.js' %}"></script>
+    <script src="{% static 'js/jquery.vmap.world.js' %}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'js/acc-main.js' %}"></script>
+    <script src="{% static 'js/croppie.js' %}"></script>
+    <script>
+
+    $('#rel-status').val('{{relationship_status}}');
+    $('#persona').val('{{personality}}');
+    $('#diet').val('{{diet}}');
+    $('#emp-status').val('{{emp_status}}');
+    $(document).on('click','.remove-btn',function () {
+        $(this).closest('.added').remove();
+    });
+
+     $(document).on('click','.add-btn',function () {
+     var id = $(this).closest('.col-md-8').find("input[type=text]").attr('id');
+     var html = '<div class="row form-group added" ><div class="col col-md-4"></div><div class="col-12 col-md-8"><input type="text" id="'+id+'" name="'+id+'"  class="form-control" style="margin-top:5px;"><span><a href="#" class="remove-btn" style="position: absolute; right: 25px; top: 0px; font-size:30px; color:red;" >-</a></span></div></div>';
+        $(this).closest('.add-row').append(html);
+    });
+        $(document).ready(function() {
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+                      $mycrop = $('.profile-pic').croppie({
+                        enableExif: true,
+                        viewport: {
+                            width: 200,
+                            height: 200,
+                            type: 'circle'
+                        },
+                        boundary: {
+                            width: 200,
+                            height: 200,
+                        }
+                    });
+
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#form-submit").on('click', function(){
+    if (typeof $mycrop !== 'undefined'){
+    $mycrop.croppie('result', {
+            type: 'base64',
+            format: 'png',
+            size: { width: 200, height: 200 }
+        }).then(function(resp) {
+        $.ajax(
+        {
+        type:"POST",
+        url: "{% url 'account' %}",
+        data:{
+            imgbase64: resp
+        },
+       success: function(){
+       $("#profile-form").submit();
+       },
+       error: function(e){
+       console.log(e);
+       }
+       });
+     });
+     }
+     else{
+     $("#profile-form").submit();
+     }
+    });
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+
+
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+
+    var blocks = $('div.pagescroll');
+    blocks.current = 0;
+
+    var next   = $('.next');
+    var  prev   = $('.prev');
+    prev.hide();
+//make a universal slide handler
+function blockControl(index){
+    //using hide and show here to fit your example,
+    //but this is where you would do slide or fades or whatever animation
+    //the important part is it is 'showing' based on .eq()
+    blocks.hide().eq(index).fadeIn();
+}
+
+//setup the initial state
+blockControl(blocks.current);
+
+next.on('click', function(){
+    //move current up one
+    blocks.current ++;
+    //test if its the last block
+    if( blocks.current >= blocks.length ){
+        //prevent over reach
+        blocks.current = blocks.length;
+
+        //handle how the last slide will work, you could loop back the beginning or
+        //whatever. Here we are just going to hide the next button.
+
+        next.hide();
+        prev.fadeIn();
+    }else{
+        //insure prev button is visalbe
+        next.hide();
+        prev.fadeIn();
+        //do slider
+        blockControl(blocks.current);
+    }
+});
+
+prev.on('click', function(){
+    //move current down one
+    blocks.current --;
+    //test if its the first block
+    if( blocks.current <= 0 ){
+        //prevent negative numbers
+        blocks.current = 0;
+        blockControl(blocks.current);
+        //Here we are just going to hide the prev button. But we also could put in control
+        //to loop the last or whatever
+        prev.hide();
+        next.fadeIn();
+    }else{
+        //insure next button is visalbe
+        prev.hide();
+        next.fadeIn();
+        //do slider
+        blockControl(blocks.current);
+    }
+});
+
+
+});
+    </script>
+{% endblock %}
+</body>
+
+</html>
+<!-- end document-->

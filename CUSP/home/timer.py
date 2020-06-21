@@ -35,4 +35,3 @@ def earlybird_time(last_obj):
     else:
         return True
 
-

@@ -74,9 +74,9 @@ h6, .h6 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Montserrat", sans-serif;
-  margin: 0 0 15px;
+  margin: 0 0 10px;
   line-height: 28px;
   font-weight: 400;
   color: #838383;
@@ -2450,6 +2450,7 @@ Cover
 }
 .icon_box_two .content p {
   font-weight: 500;
+  font-size: 16px;
   color: #838383;
 }
 
@@ -3339,7 +3340,7 @@ textarea.form-control {
                 no-repeat;
 }
 
-.razorpay-payment-button {
+.razorpay-payment-button{
   font-size: 16px;
   line-height: 1.7;
   text-transform: uppercase;
@@ -3356,6 +3357,7 @@ textarea.form-control {
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
   border-radius: 50px;
+  text-align: center;
 }
 
 .razorpay-payment-button:hover {
@@ -3484,6 +3486,89 @@ a.h2{
 }
 
 /*--------------------------------------------------------------
-# Loader
+# Misc
 --------------------------------------------------------------*/
+
+#login-btn {
+  position: relative;
+  left: 90px;
+  margin-top: 5px;
+  margin-bottom: 5px;}
+
+  #logout-btn {
+    position: relative;
+    left: 90px;
+    margin-top: 5px;
+    margin-bottom: 5px;}
+
+    .modal-confirm {
+		color: #00C8A3;
+		width: 400px;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		border-radius: 5px;
+		border: none;
+	}
+	.modal-confirm .modal-header {
+		border-bottom: none;
+        position: relative;
+	}
+	.modal-confirm h4 {
+		text-align: center;
+		font-size: 26px;
+		margin: 30px 0 -15px;
+	}
+	.modal-confirm .form-control, .modal-confirm .btn {
+		min-height: 40px;
+		border-radius: 3px;
+	}
+	.modal-confirm .close {
+        position: absolute;
+		top: -5px;
+		right: -5px;
+	}
+	.modal-confirm .modal-footer {
+		border: none;
+		text-align: center;
+		border-radius: 5px;
+		font-size: 13px;
+	}
+	.modal-confirm .icon-box {
+		color: #fff;
+		position: absolute;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+		top: -70px;
+		width: 95px;
+		height: 95px;
+		border-radius: 50%;
+		z-index: 9;
+		background: linear-gradient(180deg, #00B2CE, #17D96F);;
+		padding: 15px;
+		text-align: center;
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.modal-confirm .icon-box i {
+		font-size: 58px;
+		position: relative;
+		top: 3px;
+	}
+	.modal-confirm.modal-dialog {
+		margin-top: 280px;
+	}
+    .modal-confirm .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: linear-gradient(90deg, #00B2CE, #17D96F);
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+        border: none;
+    }
+	.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+		background: #00C8A3;
+		outline: none;
+	}
 
