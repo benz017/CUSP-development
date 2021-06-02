@@ -35,5 +35,5 @@ sqlparse==0.3.1
 stripe==2.47.0
 suds-jurko==0.6
 tqdm==4.46.0
-urllib3==1.25.9
+urllib3==1.26.5
 xmltodict==0.12.0
